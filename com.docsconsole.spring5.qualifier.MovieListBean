@@ -1,0 +1,19 @@
+package com.docsconsole.spring5.qualifier;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class MovieListBean {
+
+    @Autowired(required = false)
+
+    private List<MovieBean> moviesList;
+
+    public void getMoviesList() {
+
+        for (MovieBean movieBean : moviesList) {
+            System.out.println(movieBean.getName());
+        }
+    }
+}
