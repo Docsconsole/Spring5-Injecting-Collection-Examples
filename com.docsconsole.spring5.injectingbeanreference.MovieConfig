@@ -1,0 +1,39 @@
+package com.docsconsole.spring5.injectingbeanreference;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MovieConfig {
+
+    public static void main(String[] args) {
+
+        ApplicationContext context = new AnnotationConfigApplicationContext(MovieConfig.class);
+        MovieListBean moviesSetBean = context.getBean(MovieListBean.class);
+        moviesSetBean.getMoviesList();
+
+    }
+
+    @Bean
+    public MovieListBean getMovieListBean() {
+        return new MovieListBean();
+    }
+
+    @Bean
+    public MovieBean getNarniaMovie() {
+        return new MovieBean("Narnia", "Andrew Ralph Adamson");
+    }
+
+    @Bean
+    public MovieBean getTerminatorMovie() {
+        return new MovieBean("Terminator", "James Cameron");
+    }
+
+    @Bean
+    public MovieBean getIncrediblesMovie() {
+        return new MovieBean("Incredibles", "Brad Bird");
+    }
+}
