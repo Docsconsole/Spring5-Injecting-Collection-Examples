@@ -1,0 +1,14 @@
+package com.docsconsole.spring5.autowiringlist;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class MoviesListBean {
+    @Autowired
+    private List<String> moviesList;
+
+    public void getMoviesList() {
+        System.out.println(moviesList);
+    }
+}
