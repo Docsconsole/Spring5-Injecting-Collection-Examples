@@ -1,0 +1,15 @@
+package com.docsconsole.spring5.injectingbeanreference;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class MovieListBean {
+
+    @Autowired(required = false)
+    private List<MovieBean> moviesList;
+
+    public void getMoviesList() {
+        System.out.println(moviesList);
+    }
+}
