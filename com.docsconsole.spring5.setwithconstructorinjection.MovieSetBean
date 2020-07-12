@@ -1,0 +1,16 @@
+package com.docsconsole.spring5.setwithconstructorinjection;
+
+import java.util.Set;
+
+public class MovieSetBean {
+
+    private Set<String> moviesSet;
+
+    public MovieSetBean(Set<String> moviesSet) {
+        this.moviesSet = moviesSet;
+    }
+
+    public void getMoviesSet() {
+        System.out.println(moviesSet);
+    }
+}
