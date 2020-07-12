@@ -1,0 +1,26 @@
+package com.docsconsole.spring5.setwithconstructorinjection;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
+import java.util.HashSet;
+
+@Configuration
+public class MovieConfig {
+
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(MovieConfig.class);
+        MovieSetBean moviesSetBean = context.getBean(MovieSetBean.class);
+        moviesSetBean.getMoviesSet();
+    }
+
+    @Bean
+    public MovieSetBean getMoviesSetBean() {
+        return new MovieSetBean(new HashSet<>(Arrays.asList("Terminator", "Narnia", "Incredibles")));
+    }
+}
+
