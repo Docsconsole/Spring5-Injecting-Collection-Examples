@@ -1,0 +1,24 @@
+package com.docsconsole.spring5.mapwithsetterinjection;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Map;
+
+public class MovieDirectorMapBean {
+
+    private Map<String, String> movieDirectorMap;
+
+    public MovieDirectorMapBean() {
+    }
+
+    @Autowired
+    public void setMovieDirectorMap(Map<String, String> movieDirectorMap) {
+        this.movieDirectorMap = movieDirectorMap;
+    }
+
+    public void getMovieDirectorMap() {
+        System.out.println(movieDirectorMap);
+    }
+}
+
