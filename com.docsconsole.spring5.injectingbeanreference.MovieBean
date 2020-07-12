@@ -1,0 +1,12 @@
+package com.docsconsole.spring5.injectingbeanreference;
+
+public class MovieBean {
+
+    private String name;
+    private String director;
+
+    public MovieBean(String name, String director) {
+        this.name = name;
+        this.director = director;
+    }
+}
