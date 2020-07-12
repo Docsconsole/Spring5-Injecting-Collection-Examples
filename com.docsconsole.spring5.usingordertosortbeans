@@ -1,0 +1,86 @@
+package com.docsconsole.spring5.usingordertosortbeans;
+
+public class MovieBean {
+
+    private String name;
+    private String director;
+
+    public MovieBean(String name, String director) {
+        this.name = name;
+        this.director = director;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+}
+
+
+package com.docsconsole.spring5.usingordertosortbeans;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+
+@Configuration
+public class MovieConfig {
+
+    public static void main(String[] args) {
+
+        ApplicationContext context = new AnnotationConfigApplicationContext(MovieConfig.class);
+        MovieListBean moviesListBean = context.getBean(MovieListBean.class);
+        moviesListBean.getMoviesList();
+    }
+
+    @Bean
+    @Order(2)
+    public MovieListBean getMovieListBean() {
+        return new MovieListBean();
+    }
+
+    @Bean
+    public MovieBean getNarniaMovie() {
+        return new MovieBean("Narnia", "Andrew Ralph Adamson");
+    }
+
+    @Bean
+    @Order(2)
+    public MovieBean getTerminatorMovie() {
+        return new MovieBean("Terminator", "James Cameron");
+    }
+
+    @Bean
+    @Order(1)
+    public MovieBean getIncrediblesMovie() {
+        return new MovieBean("Incredibles", "Brad Bird");
+    }
+}
+
+
+
+package com.docsconsole.spring5.usingordertosortbeans;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class MovieListBean {
+
+    @Autowired(required = false)
+    private List<MovieBean> moviesList;
+
+    public void getMoviesList() {
+
+        for (MovieBean movieBean : moviesList) {
+            System.out.println(movieBean.getName());
+        }
+    }
+}
+
