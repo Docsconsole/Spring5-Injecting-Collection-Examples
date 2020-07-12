@@ -1,0 +1,31 @@
+package com.docsconsole.spring5.autowiringlist;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
+import java.util.List;
+
+@Configuration
+public class MovieConfig {
+
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(MovieConfig.class);
+        MoviesListBean moviesListBean = context.getBean(MoviesListBean.class);
+        moviesListBean.getMoviesList();
+    }
+
+    @Bean
+    public MoviesListBean getMoviesListBean() {
+        return new MoviesListBean();
+    }
+
+    @Bean
+    public List<String> moviesList() {
+        return Arrays.asList("Terminator", "Narnia", "Incredibles");
+    }
+}
+
